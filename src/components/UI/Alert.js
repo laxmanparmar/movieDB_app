@@ -1,0 +1,12 @@
+import React from 'react';
+
+const Alert = (props)=>
+{
+    return(
+        <div className="alert alert-warning">
+            {props.msg}
+        </div>
+    )
+}
+
+export default Alert;

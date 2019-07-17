@@ -10,9 +10,14 @@ function* indexSaga() {
 
     yield takeEvery( actionType.AUTH_START, authSagas.authLogin);
     yield takeEvery( actionType.AUTH_LOGOUT_START, authSagas.checkAuthTimeOut);
-
+    yield takeEvery( actionType.AUTH_AUTOLOGIN, authSagas.autoLogin);
+    
     yield takeEvery( actionType.ADDTO_FAVORITE_START, fireBaseSagas.favoriteListCall);
     yield takeEvery( actionType.ADDTO_WATCHLIST_START, fireBaseSagas.watchlistListCall);
+
+    yield takeEvery( actionType.ADDTO_REVIEW_START, sagaAction.giveMoviewReview);
+    yield takeEvery( actionType.FETCH_USER_REVIEW, sagaAction.userMovieReview);
+    
   }
 
   export default indexSaga;

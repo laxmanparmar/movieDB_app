@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import * as actionType from '../../reduxStore/actions';
 import favImg from '../../assets/images/fav.png';
 import watchListImg from '../../assets/images/watchlist.png';
+import backArrowImg from '../../assets/images/backArrow.png';
 import MovieDetails from './MovieDetails';
 import AboutMovie from './AboutMovie';
 import './MovieCard.css';
@@ -52,7 +53,9 @@ export class Movie extends Component {
           </div>
           <div className="col-md-8">
             <h2 className="mb-4">
+
             {this.props.movie.original_title}
+            
             <img className="movie_icon-width ml-3" src={favImg} alt="Favorite"
             onClick={()=>this.addToFavorite()}
             title={this.props.isAutheticate?'Add to Favorite':'Login to Add this to your Favorite'}/>
@@ -61,8 +64,14 @@ export class Movie extends Component {
             onClick={()=>this.addToWatchlist()}
             title={this.props.isAutheticate?'Add to Watchlist':'Login to Add this to your Watchlist'}
             />
+
+            <Link to="/" className="movie_icon-rightAlign">
+            <img className="movie_icon-width ml-3" src={backArrowImg} alt="Favorite" title="Go Back To Search"/>
+            </Link>
+
             </h2>
-            <MovieDetails movie={this.props.movie}/>  
+            <MovieDetails movie={this.props.movie} isAutheticate={this.props.isAutheticate} 
+            movieId={this.props.match.params.id}/>  
           </div>
         </div>
        

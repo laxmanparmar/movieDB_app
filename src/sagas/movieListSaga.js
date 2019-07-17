@@ -2,6 +2,7 @@ import axios from '../common/axiosInstance';
 import {put} from 'redux-saga/effects';
 import * as actionType from '../reduxStore/actions';
 import * as api from '../common/movieDbApi';
+import axiosFireBase from '../common/axiosFireBaseInstance';
 
 const latestMovieApi=()=>{
    
@@ -63,6 +64,78 @@ export function* getMovieObj(action)
   {
 
   }
+}
+
+
+const addMoviewReview = (params,token)=>
+{
+    const formParams = {
+                  movieId: params.movieId,
+                  userId : params.userId,
+                  review : params.review
+                      }
+    return axiosFireBase.post('/movieReview.json?auth='+token,formParams);
+}
+
+export function* giveMoviewReview(action)
+{ 
+    try{
+      const result = yield addMoviewReview(action.data,action.data.token);
+      
+      const obj ={
+        movieId : action.data.movieId,
+        name : action.data.review
+      }
+
+      yield put({type:actionType.ADDTO_REVIEW_SUCCESS,review : obj});
+    }catch(e)
+    {
+      console.log(e)
+      yield put({type:actionType.ADDTO_REVIEW_FAIL,error : e});
+    }
+}
+
+
+const checkReviewExist =(userId,token)=>
+{
+    const queryParams = '?auth='+token +'&orderBy="userId"&equalTo="'+userId+'"';
+    return axiosFireBase.get('/movieReview.json'+queryParams);
+}
+
+
+const getMoviewReview =(result,movieId)=>
+{
+    const data =  Object.keys(result).filter((val)=>{
+          if(result[val]["movieId"] == movieId)
+          {
+            return result;
+          }
+        
+        })
+   
+    return data.length>0?[result[data[0]]]:[];
+}
+
+export function* userMovieReview(action)
+{
+    try{
+        const res = yield checkReviewExist(action.data.userId ,action.data.token);
+        
+        const review = getMoviewReview(res.data,action.data.movieId)
+       
+        if(review.length>0)
+        {
+          const obj ={
+            movieId : action.data.movieId,
+            name : review[0]['review']
+          }
+          yield put({type:actionType.ADDTO_REVIEW_SUCCESS,review : obj});
+        }
+    }catch(e)
+    {   
+        yield put({type:actionType.ADDTO_REVIEW_FAIL,error : e})
+    }
+    
 }
 
 

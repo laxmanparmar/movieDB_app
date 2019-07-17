@@ -18,3 +18,17 @@ export const ADDTO_FAVORITE_FAIL = "ADDTO_FAVORITE_FAIL";
 export const ADDTO_WATCHLIST_START = "ADDTO_WATCHLIST_START";
 export const ADDTO_WATCHLIST_SUCCESS = "ADDTO_WATCHLIST_SUCCESS";
 export const ADDTO_WATCHLIST_FAIL = "ADDTO_WATCHLIST_FAIL";
+export const AUTH_AUTOLOGIN = "AUTH_AUTOLOGIN";
+
+export const FETCH_USER_REVIEW = "FETCH_USER_REVIEW";
+export const ADDTO_REVIEW_START = "ADDTO_REVIEW_START";
+export const ADDTO_REVIEW_SUCCESS = "ADDTO_REVIEW_SUCCESS";
+export const ADDTO_REVIEW_FAIL = "ADDTO_REVIEW_FAIL";
+
+
+export const removeUserOnLogout = ()=>
+{
+    localStorage.removeItem("token");
+    localStorage.removeItem("expirationDate");
+    localStorage.removeItem("userId");
+}

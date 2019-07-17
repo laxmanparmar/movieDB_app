@@ -8,15 +8,22 @@ import Movie from './components/MovieCard/Movie';
 import NavBar from './components/NavBarMenu/NavBar/NavBar';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logout from './container/Logout';
+import * as actionType from './reduxStore/actions';
 
 class App extends Component {
 
+  componentDidMount()
+  {
+    this.props.autoLoginTry()
+  }
   render()
   { 
     return (
       <div className="App">
        {this.props.onSpinner?<Spinner/>:null}
-                    <NavBar isAutheticate={this.props.isAutheticate}/>
+       
+       <NavBar isAutheticate={this.props.isAutheticate}/>
+      
       <Switch>
         <Route path="/auth" component={LoginForm}/>  
         <Route path="/logout" component={Logout}/>
@@ -38,4 +45,10 @@ const mapStateToProps = (state) =>
     }
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch =>
+{
+  return{
+      autoLoginTry : () => dispatch({type:actionType.AUTH_AUTOLOGIN})
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);

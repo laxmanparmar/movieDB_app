@@ -8,6 +8,7 @@ class Logout extends Component
     componentDidMount()
     {
         this.props.onLogout();
+        actionType.removeUserOnLogout();
     }
     render(){
         return(

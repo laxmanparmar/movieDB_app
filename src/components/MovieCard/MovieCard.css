@@ -3,3 +3,9 @@
     width:40px;
     cursor: pointer;
 }
+
+.movie_icon-rightAlign
+{
+    float: right;
+}
+

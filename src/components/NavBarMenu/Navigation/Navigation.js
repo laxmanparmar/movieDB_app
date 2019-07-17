@@ -6,9 +6,7 @@ const Navigation = (props)=>
     return (
         <Aux>
             <NavLink to={"/"+props.path} >{props.children}</NavLink>
-            
-            
-            </Aux>
+        </Aux>
         
     )
 }

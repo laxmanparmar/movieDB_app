@@ -4,7 +4,7 @@ import {Route,Switch} from 'react-router-dom';
 import './App.css';
 import Spinner from './components/UI/spinner/Spinner';
 import {connect} from 'react-redux';
-import Movie from './components/MovieCard/Movie';
+import Movie from './components/Movie/Movie';
 import NavBar from './components/NavBarMenu/NavBar/NavBar';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logout from './container/Logout';

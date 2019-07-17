@@ -1,6 +1,6 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
-import AddReview from './AddReview';
+import Aux from '../../../hoc/Aux/Aux';
+import AddReview from '../MovieControls/AddReview';
 
 const MovieDetails = (props)=>
 {

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import * as actionType from '../../reduxStore/actions';
-import favImg from '../../assets/images/fav.png';
-import watchListImg from '../../assets/images/watchlist.png';
-import backArrowImg from '../../assets/images/backArrow.png';
-import MovieDetails from './MovieDetails';
-import AboutMovie from './AboutMovie';
+import MovieHeader from './Details/MovieHeader';
+import MovieDetails from './Details/MovieDetails';
+import AboutMovie from './MovieControls/AboutMovie';
 import './MovieCard.css';
 
 export class Movie extends Component {
@@ -52,24 +49,11 @@ export class Movie extends Component {
             <img src={'https://image.tmdb.org/t/p/original'+ this.props.movie.poster_path} style={{width:'100%'}} className="thumbnail" alt="Poster" />
           </div>
           <div className="col-md-8">
-            <h2 className="mb-4">
-
-            {this.props.movie.original_title}
-            
-            <img className="movie_icon-width ml-3" src={favImg} alt="Favorite"
-            onClick={()=>this.addToFavorite()}
-            title={this.props.isAutheticate?'Add to Favorite':'Login to Add this to your Favorite'}/>
-            
-            <img className="movie_icon-width ml-3" src={watchListImg} alt="WatchList" 
-            onClick={()=>this.addToWatchlist()}
-            title={this.props.isAutheticate?'Add to Watchlist':'Login to Add this to your Watchlist'}
+            <MovieHeader movie={this.props.movie} 
+            isAutheticate={this.props.isAutheticate} 
+            addToFavorite={this.addToFavorite}
+            addToWatchlist={this.addToWatchlist}
             />
-
-            <Link to="/" className="movie_icon-rightAlign">
-            <img className="movie_icon-width ml-3" src={backArrowImg} alt="Favorite" title="Go Back To Search"/>
-            </Link>
-
-            </h2>
             <MovieDetails movie={this.props.movie} isAutheticate={this.props.isAutheticate} 
             movieId={this.props.match.params.id}/>  
           </div>

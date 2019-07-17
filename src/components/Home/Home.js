@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import * as actionType from '../../reduxStore/actions'
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../Movie/Card/MovieCard';
 
 
 class Home extends Component

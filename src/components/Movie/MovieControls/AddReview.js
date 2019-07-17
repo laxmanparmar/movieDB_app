@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
-import * as actionType from '../../reduxStore/actions';
+import * as actionType from '../../../reduxStore/actions';
 import {connect} from 'react-redux';
-import Alert from '../UI/Alert';
+import Alert from '../../UI/Alert';
 
 class AddReview extends Component
 {

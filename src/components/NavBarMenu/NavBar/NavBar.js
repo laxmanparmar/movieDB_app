@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import Logo from '../Logo/Logo';
 import './NavBar.css';
+import Aux from '../../../hoc/Aux/Aux';
 
 const NavBar =(props)=>
 {
@@ -25,7 +26,12 @@ const NavBar =(props)=>
             {
                 !props.isAutheticate ?
                 <Navigation path="auth">Authenticate</Navigation>
-                : <Navigation path="logout">Logout</Navigation>
+                : 
+                <Aux>
+                    <Navigation path="myLibrary">My Library</Navigation>
+                    <Navigation path="logout">Logout</Navigation>
+                </Aux>
+                
             }
          </div>
      </div>

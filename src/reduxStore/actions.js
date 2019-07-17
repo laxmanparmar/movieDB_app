@@ -26,6 +26,12 @@ export const ADDTO_REVIEW_SUCCESS = "ADDTO_REVIEW_SUCCESS";
 export const ADDTO_REVIEW_FAIL = "ADDTO_REVIEW_FAIL";
 
 
+export const FETCH_MYFAVORITE_START = "FETCH_MYFAVORITE_START";
+export const FETCH_MYFAVORITE_SUCCESS = "FETCH_MYFAVORITE_SUCCESS";
+export const FETCH_MYFAVORITE_FAIL = "FETCH_MYFAVORITE_FAIL";
+
+
+
 export const removeUserOnLogout = ()=>
 {
     localStorage.removeItem("token");

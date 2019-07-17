@@ -3,6 +3,9 @@ import * as actionType from '../reduxStore/actions';
 import * as sagaAction from './movieListSaga';
 import * as authSagas from './authSaga';
 import * as fireBaseSagas from './fireBaseAPISaga';
+import * as myLibrarySaga from './myLibrarySaga';
+
+
 function* indexSaga() {
     yield takeEvery( actionType.FETCH_LATEST_MOVIES, sagaAction.getMovies);
     yield takeEvery( actionType.SEARCH_MOVIE, sagaAction.getSearchedMovieResult);
@@ -17,6 +20,8 @@ function* indexSaga() {
 
     yield takeEvery( actionType.ADDTO_REVIEW_START, sagaAction.giveMoviewReview);
     yield takeEvery( actionType.FETCH_USER_REVIEW, sagaAction.userMovieReview);
+
+    yield takeEvery( actionType.FETCH_MYFAVORITE_START, myLibrarySaga.myFavorite);
     
   }
 

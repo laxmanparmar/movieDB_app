@@ -19,7 +19,7 @@ class Search extends Component {
   render() {
     return (
       
-      <form id="searchForm" onSubmit={this.onSubmit} className="mb-5">
+      <form id="searchForm" onSubmit={this.onSubmit} className="mt-2 mb-5">
           <div className="input-group">
             <input
                 type="text"

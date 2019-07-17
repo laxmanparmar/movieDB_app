@@ -6,7 +6,7 @@ import MovieDetails from './Details/MovieDetails';
 import AboutMovie from './MovieControls/AboutMovie';
 import './MovieCard.css';
 
-export class Movie extends Component {
+class Movie extends Component {
 
   
   addToFavorite=()=>{
@@ -16,7 +16,11 @@ export class Movie extends Component {
       const params= {
         movieId: this.props.match.params.id,
         userId:this.props.userId,
-        token:this.props.token
+        token:this.props.token,
+        imagePath :this.props.movie.poster_path,
+        title : this.props.movie.original_title,
+        tagline : this.props.movie.tagline,
+        rating : this.props.movie.vote_average
       }
       this.props.onAddToFavorite(params)
     }
@@ -28,13 +32,18 @@ export class Movie extends Component {
       const params= {
         movieId: this.props.match.params.id,
         userId:this.props.userId,
-        token:this.props.token
+        token:this.props.token,
+        imagePath :this.props.movie.poster_path,
+        title : this.props.movie.original_title,
+        tagline : this.props.movie.tagline,
+        rating : this.props.movie.vote_average
       }
       this.props.onAddToWatchlist(params)
     }
   }
 
   componentDidMount() {
+    
     this.props.onFetchMovieById(this.props.match.params.id);
     
   }
@@ -42,6 +51,7 @@ export class Movie extends Component {
     let movieInfo =null
    if(this.props.movie && Object.keys(this.props.movie).length !== 0)
    {
+    
     movieInfo = (
       <div className="container mt-5">
         <div className="row">

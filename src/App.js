@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import MoviesList from './container/MoviesList';
 import {Route,Switch} from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Spinner from './components/UI/spinner/Spinner';
 import {connect} from 'react-redux';
@@ -9,6 +10,8 @@ import NavBar from './components/NavBarMenu/NavBar/NavBar';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logout from './container/Logout';
 import * as actionType from './reduxStore/actions';
+import MyLibrary from './components/MyLibrary/MyLibrary';
+import MyFavorite from './components/MyLibrary/MyFavorite/MyFavorite';
 
 class App extends Component {
 
@@ -27,6 +30,7 @@ class App extends Component {
       <Switch>
         <Route path="/auth" component={LoginForm}/>  
         <Route path="/logout" component={Logout}/>
+        <Route path="/myLibrary" component={MyLibrary}/>
         <Route path="/movie/:id" component={Movie}/>
         <Route path="/" exact component={MoviesList}/>
        </Switch>

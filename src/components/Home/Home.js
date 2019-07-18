@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import * as actionType from '../../reduxStore/actions'
 import MovieCard from '../Movie/Card/MovieCard';
-
+import noMatchFound from '../../assets/images/noMatchFound.png';
 
 class Home extends Component
 {
@@ -12,13 +12,17 @@ class Home extends Component
        
     }
     render()
-    {
+    {   let list = <img className="offset-md-3" src={noMatchFound} alt="no record match"/>
+        if(this.props.popularMovies.length>0)
+        {
+            list = this.props.popularMovies.map(ins =>{
+                return <MovieCard movieObj={ins} key={ins.id}/>
+            })
+        }
         return(
             <div className="row mt-10">
                 {
-                   this.props.popularMovies.map(ins =>{
-                        return <MovieCard movieObj={ins} key={ins.id}/>
-                    })
+                   list
                 }
             </div>
         )

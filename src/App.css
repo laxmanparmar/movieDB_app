@@ -39,3 +39,7 @@
   font-weight: bolder;
 
 }
+
+.container_card-height{
+  min-height: 84vh;
+}

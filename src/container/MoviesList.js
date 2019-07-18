@@ -8,7 +8,7 @@ class MoviesList extends Component
     render(){
         return(
             <Aux>
-                <div className="container mt-2">
+                <div className="container mt-2 container_card-height">
                     <Search/>
                     <Home/>
                  </div>

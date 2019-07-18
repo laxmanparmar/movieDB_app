@@ -4,5 +4,5 @@ export const Exist ="Already Exist";
 export const SUCCESS_REMOVED ="Successfully removed.";
 export const ERROR ="Somthing went wrong.";
 
-export const SUCCESS_FAV = "Successfully added to your Favorites";
-export const SUCCESS_Watch = "Successfully added to your Watchlist";
+export const SUCCESS_FAV = "Added to your Favorites";
+export const SUCCESS_Watch = "Added to your Watchlist";

@@ -25,9 +25,13 @@ const NavBar =(props)=>
          <div className="navbarc-links">
             {
                 !props.isAutheticate ?
+                <Aux>
+                <Navigation path=""  exact>Home</Navigation>
                 <Navigation path="auth">Authenticate</Navigation>
+                </Aux>
                 : 
                 <Aux>
+                    <Navigation path=""  exact>Home</Navigation>
                     <Navigation path="myLibrary">My Library</Navigation>
                     <Navigation path="logout">Logout</Navigation>
                 </Aux>

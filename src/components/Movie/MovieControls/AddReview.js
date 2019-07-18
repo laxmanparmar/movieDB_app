@@ -58,7 +58,7 @@ class AddReview extends Component
     {
         return(
             <div className="form-group mt-2">
-                  <label htmlFor="comment">Review:</label>
+                  <label htmlFor="comment">Your Review:</label>
                   <textarea className="form-control" rows="5" id="comment" 
                   onChange={(e)=>this.inputReview(e)} value={this.state.review} disabled={this.props.reviewMovieId === this.props.movieId}></textarea>
                   {this.state.error}

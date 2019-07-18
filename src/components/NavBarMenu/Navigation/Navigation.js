@@ -5,7 +5,7 @@ const Navigation = (props)=>
 {
     return (
         <Aux>
-            <NavLink to={"/"+props.path} >{props.children}</NavLink>
+            <NavLink to={"/"+props.path} exact={props.exact} >{props.children}</NavLink>
         </Aux>
         
     )

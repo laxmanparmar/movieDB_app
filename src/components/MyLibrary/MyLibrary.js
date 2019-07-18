@@ -58,8 +58,8 @@ class MyLibrary extends Component {
                 <input id="tab-2" type="radio" name="tabs" checked={this.state.tab2} onChange={this.updateTab2}/>
 
                 <div className="tabs">
-                    <label htmlFor="tab-1">WatchList</label>
-                    <label htmlFor="tab-2">Favorites</label>
+                    <label htmlFor="tab-1">Favorites</label>
+                    <label htmlFor="tab-2">WatchList</label>
 
                 </div>
                 <div className="content myLibrary_content-height">

@@ -36,7 +36,7 @@ export function* removeFav(params){
         
         yield put({type:actionType.REMOVE_FAV_SUCCESS,storeId:params.data.storeId})
 
-        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
+        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_REMOVED});
     }catch(e)
     {
         yield put({type:actionType.REMOVE_FAV_FAIL,error:e.error})
@@ -52,7 +52,7 @@ export function* removeWatch(params){
         
         yield put({type:actionType.REMOVE_WATCH_SUCCESS,storeId: params.data.storeId})
 
-        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
+        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_REMOVED});
     }catch(e)
     {
         yield put({type:actionType.REMOVE_WATCH_FAIL,error:e.error})

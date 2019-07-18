@@ -54,7 +54,7 @@ class App extends Component {
 
         {routes}
         {this.props.isAlertCall? this.initAlert() :null}
-        <ToastContainer autoClose={2000} position={toast.POSITION.BOTTOM_CENTER}/>
+        <ToastContainer autoClose={2000} hideProgressBar={true} position={toast.POSITION.BOTTOM_CENTER}/>
       </div>
     );
   }

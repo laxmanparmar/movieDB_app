@@ -24,6 +24,8 @@ class Movie extends Component {
         rating : this.props.movie.vote_average
       }
       this.props.onAddToFavorite(params)
+    }else{
+      toast.success("Login to add Favorites");
     }
   }
 
@@ -40,6 +42,8 @@ class Movie extends Component {
         rating : this.props.movie.vote_average
       }
       this.props.onAddToWatchlist(params)
+    }else{
+      toast.success("Login to add watchlist");
     }
   }
 

@@ -14,7 +14,7 @@ export function* favoriteListCall(action)
               
             yield put({type:actionType.ADDTO_FAVORITE_SUCCESS,favorite : action,name:result.data.name})
 
-            yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
+            yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_FAV});
         
         }else{
             yield put({type:actionType.INIT_ALERT,msg:label.Exist});
@@ -38,7 +38,7 @@ export function* watchlistListCall(action)
             const result = yield actionCall.updateWatchlistList(action.params,action.params.token);
               
             yield put({type:actionType.ADDTO_WATCHLIST_SUCCESS,watchlist : action,name:result.data.name})
-            yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
+            yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_Watch});
         
         }else{
             yield put({type:actionType.INIT_ALERT,msg:label.Exist});

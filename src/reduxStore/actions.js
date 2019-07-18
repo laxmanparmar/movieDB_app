@@ -1,3 +1,11 @@
+export const SHOW_LOADING = 'SHOW_LOADING';
+export const HIDE_LOADING = 'HIDE_LOADING';
+
+export const INIT_ALERT = 'INIT_ALERT';
+export const SHOW_ALERT = 'SHOW_ALERT';
+export const HIDE_ALERT = 'HIDE_ALERT';
+
+
 export const FETCH_LATEST_MOVIES= 'FETCH_LATEST_MOVIES';
 export const ADD_LATEST_MOVIES = 'ADD_LATEST_MOVIES';
 export const SET_LOADING = 'SET_LOADING';
@@ -41,6 +49,8 @@ export const REMOVE_FAV_FAIL = "REMOVE_FAV_FAIL";
 export const REMOVE_WATCH_START = "REMOVE_WATCH_START";
 export const REMOVE_WATCH_SUCCESS = "REMOVE_WATCH_SUCCESS";
 export const REMOVE_WATCH_FAIL = "REMOVE_WATCH_FAIL";
+
+
 
 export const removeUserOnLogout = ()=>
 {

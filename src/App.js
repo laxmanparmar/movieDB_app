@@ -11,12 +11,19 @@ import LoginForm from './components/LoginForm/LoginForm';
 import Logout from './container/Logout';
 import * as actionType from './reduxStore/actions';
 import MyLibrary from './components/MyLibrary/MyLibrary';
+import { ToastContainer,toast } from "react-toastify";
+import '../node_modules/react-toastify/dist/ReactToastify.css';
 
 
 class App extends Component {
 
   componentDidMount() {
     this.props.autoLoginTry()
+  }
+
+  initAlert = ()=>
+  {
+     toast.success(this.props.alertMsg);
   }
   render() {
     let routes = (
@@ -46,7 +53,8 @@ class App extends Component {
         <NavBar isAutheticate={this.props.isAutheticate} />
 
         {routes}
-
+        {this.props.isAlertCall? this.initAlert() :null}
+        <ToastContainer autoClose={2000} position={toast.POSITION.BOTTOM_CENTER}/>
       </div>
     );
   }
@@ -56,7 +64,9 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     onSpinner: state.movies.spinner || state.auth.loading,
-    isAutheticate: state.auth.token !== null
+    isAutheticate: state.auth.token !== null,
+    alertMsg : state.successError.msg,
+    isAlertCall : state.successError.showAlert
   }
 }
 

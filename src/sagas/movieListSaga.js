@@ -3,6 +3,7 @@ import {put} from 'redux-saga/effects';
 import * as actionType from '../reduxStore/actions';
 import * as api from '../common/movieDbApi';
 import axiosFireBase from '../common/axiosFireBaseInstance';
+import * as label from '../common/label';
 
 const latestMovieApi=()=>{
    
@@ -88,10 +89,12 @@ export function* giveMoviewReview(action)
       }
 
       yield put({type:actionType.ADDTO_REVIEW_SUCCESS,review : obj});
+      yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
     }catch(e)
     {
-      console.log(e)
+      
       yield put({type:actionType.ADDTO_REVIEW_FAIL,error : e});
+      yield put({type:actionType.INIT_ALERT,msg:label.ERROR});
     }
 }
 

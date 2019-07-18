@@ -5,12 +5,13 @@ import MovieHeader from './Details/MovieHeader';
 import MovieDetails from './Details/MovieDetails';
 import AboutMovie from './MovieControls/AboutMovie';
 import './MovieCard.css';
+import {toast} from 'react-toastify';
 
 class Movie extends Component {
 
   
   addToFavorite=()=>{
-   
+    
     if(this.props.isAutheticate)
     {
       const params= {

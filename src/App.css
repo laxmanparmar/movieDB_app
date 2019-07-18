@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+.Toastify__toast--success
+{
+  background: #a5dc86 !important;
+  color:black !important;
+  font-weight: bolder;
+
+}

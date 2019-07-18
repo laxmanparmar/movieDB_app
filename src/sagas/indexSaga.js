@@ -4,7 +4,7 @@ import * as sagaAction from './movieListSaga';
 import * as authSagas from './authSaga';
 import * as fireBaseSagas from './fireBaseAPISaga';
 import * as myLibrarySaga from './myLibrarySaga';
-
+import * as successSaga from './successErrorSaga';
 
 function* indexSaga() {
     yield takeEvery( actionType.FETCH_LATEST_MOVIES, sagaAction.getMovies);
@@ -26,6 +26,9 @@ function* indexSaga() {
 
     yield takeEvery( actionType.REMOVE_FAV_START, myLibrarySaga.removeFav);
     yield takeEvery( actionType.REMOVE_WATCH_START, myLibrarySaga.removeWatch);
+
+
+    yield takeEvery( actionType.INIT_ALERT, successSaga.initAlert);
     
   }
 

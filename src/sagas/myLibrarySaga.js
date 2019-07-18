@@ -1,7 +1,7 @@
 import * as actionType from '../reduxStore/actions';
 import * as actionCall from './action';
 import {put} from 'redux-saga/effects';
-
+import * as label from '../common/label';
 
 
 export function* myFavorite(params){
@@ -35,9 +35,13 @@ export function* removeFav(params){
         yield actionCall.removeFavorite(params.data.token,params.data.storeId);
         
         yield put({type:actionType.REMOVE_FAV_SUCCESS,storeId:params.data.storeId})
+
+        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
     }catch(e)
     {
         yield put({type:actionType.REMOVE_FAV_FAIL,error:e.error})
+
+        yield put({type:actionType.INIT_ALERT,msg:label.ERROR});
     }
 }
 
@@ -47,8 +51,12 @@ export function* removeWatch(params){
         yield actionCall.removeWatchlist(params.data.token,params.data.storeId);
         
         yield put({type:actionType.REMOVE_WATCH_SUCCESS,storeId: params.data.storeId})
+
+        yield put({type:actionType.INIT_ALERT,msg:label.SUCCESS_MSG});
     }catch(e)
     {
         yield put({type:actionType.REMOVE_WATCH_FAIL,error:e.error})
+
+        yield put({type:actionType.INIT_ALERT,msg:label.ERROR});
     }
 }

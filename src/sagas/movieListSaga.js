@@ -80,7 +80,7 @@ const addMoviewReview = (params,token)=>
 export function* giveMoviewReview(action)
 { 
     try{
-      const result = yield addMoviewReview(action.data,action.data.token);
+      yield addMoviewReview(action.data,action.data.token);
       
       const obj ={
         movieId : action.data.movieId,
@@ -106,7 +106,7 @@ const checkReviewExist =(userId,token)=>
 const getMoviewReview =(result,movieId)=>
 {
     const data =  Object.keys(result).filter((val)=>{
-          if(result[val]["movieId"] == movieId)
+          if(result[val]["movieId"] === movieId)
           {
             return result;
           }

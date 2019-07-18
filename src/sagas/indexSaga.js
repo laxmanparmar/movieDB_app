@@ -22,6 +22,10 @@ function* indexSaga() {
     yield takeEvery( actionType.FETCH_USER_REVIEW, sagaAction.userMovieReview);
 
     yield takeEvery( actionType.FETCH_MYFAVORITE_START, myLibrarySaga.myFavorite);
+    yield takeEvery( actionType.FETCH_WATCHLIST_START, myLibrarySaga.myWatchList);
+
+    yield takeEvery( actionType.REMOVE_FAV_START, myLibrarySaga.removeFav);
+    yield takeEvery( actionType.REMOVE_WATCH_START, myLibrarySaga.removeWatch);
     
   }
 

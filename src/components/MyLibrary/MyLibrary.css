@@ -7,12 +7,19 @@
 {
   min-height: 70vh;
 }
-.myLibrary_img-padding{
-  width: 155px;
-  height: 155px;
-  margin: 4%;
+.libraryCard_rIcon-position{
+    width: 15%;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
 }
-
+.card-img-top
+{
+  width: auto !important;
+}
 @import "https://fonts.googleapis.com/css?family=Roboto:400,700";
 *, :before, :after {
   box-sizing: border-box;
@@ -93,3 +100,15 @@ input[name="tabs"]#tab-2:checked ~ .tabs label:nth-child(2):after {
   display: none;
   padding: 0 20px;
 }
+
+
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Rating from '../../UI/StarRating/Rating';
-
+import DetailsButton from './DetailsButton';
 const MovieCard = (props) =>
 {
 
@@ -13,10 +12,9 @@ const MovieCard = (props) =>
             {props.movieObj.title}
           </label>
           <Rating score={props.movieObj.vote_average}/> 
-          <Link className="btn btn-primary mt-2" to={'/movie/' + props.movieObj.id}>
-            Movie Details
-            <i className="fas fa-chevron-right" />
-          </Link>
+
+          <DetailsButton movieId={props.movieObj.id} />
+         
         </div>
       </div>
     );

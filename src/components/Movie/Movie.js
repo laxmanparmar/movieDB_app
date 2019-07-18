@@ -53,7 +53,7 @@ class Movie extends Component {
    {
     
     movieInfo = (
-      <div className="container mt-5">
+      <div className="container">
         <div className="row">
           <div className="col-md-4 card card-body">
             <img src={'https://image.tmdb.org/t/p/original'+ this.props.movie.poster_path} style={{width:'100%'}} className="thumbnail" alt="Poster" />

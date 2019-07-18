@@ -19,6 +19,17 @@ export const checkFavoriteExist =(userId,token)=>
     return axiosFireBase.get('/movieFavorites.json'+queryParams);
 }
 
+export const removeFavorite =(token,favId)=>
+{
+    const queryParams = '?auth='+token;
+    return axiosFireBase.delete(`/movieFavorites/${favId}.json`+queryParams);
+}
+
+export const removeWatchlist =(token,watchId)=>
+{
+    const queryParams = '?auth='+token;
+    return axiosFireBase.delete(`/movieWatchlists/${watchId}.json`+queryParams);
+}
 
 export const checkMovieIdExist =(result,movieId)=>
 {
@@ -45,4 +56,17 @@ export const checkWatchlistExist =(userId,token)=>
 {
     const queryParams = '?auth='+token +'&orderBy="userId"&equalTo="'+userId+'"';
     return axiosFireBase.get('/movieWatchlists.json'+queryParams);
+}
+
+export const processData=(Obj)=>
+{
+    const result = [];
+    Object.keys(Obj).forEach((val,index)=>{
+       
+        result.push({
+            ...Obj[val],
+            storeId : val
+        }); 
+    })
+   return result;
 }

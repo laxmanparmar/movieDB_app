@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Form } from "react-final-form";
 import FieldInput from '../UI/Input/FieldInput';
-import Aux from '../../hoc/Aux/Aux';
 import { connect } from 'react-redux';
 import * as actionType from '../../reduxStore/actions';
 import Alert from '../UI/Alert';
 import { Redirect } from 'react-router-dom';
+import SwitchButton from './SwitchButton';
+
 class LoginForm extends Component {
   state = {
     isSignIn: false
@@ -54,14 +55,17 @@ class LoginForm extends Component {
     }
 
     return (
-      <Aux>
+      <div className="container mt-5">
         <Form
           onSubmit={values => this.onSubmit(values)}
           validate={values => this.validate(values)}
           render={({ handleSubmit, submitting }) => (
-            <form onSubmit={handleSubmit} className="container mt-5">
+            <form onSubmit={handleSubmit} >
               {loginSuccessRedirect}
               {errorMessgae}
+              <br />
+              <h2 className="strong">{this.state.isSignIn ? 'Register' : 'Sign In'}</h2>
+              <br />
               <FieldInput name="email" type="text" placeholder="Email" label="Email" />
 
               <FieldInput name="password" type="password" placeholder="Password" label="Password" />
@@ -71,11 +75,10 @@ class LoginForm extends Component {
                   : null
               }
 
-              <div className="text-center">
+              <div className="text-center mb-3">
                 <button type="submit" disabled={submitting} className="btn btn-success">
                   Submit
                 </button>
-
               </div>
 
             </form>
@@ -83,12 +86,8 @@ class LoginForm extends Component {
           )}
         />
 
-        <div className="text-center">
-          <button type="button " className="btn btn-info mt-2" onClick={this.switchSumit}>
-            Switch to {this.state.isSignIn ? 'SignIn' : 'Register'}
-          </button>
-        </div>
-      </Aux>
+        <SwitchButton isSignIn={this.state.isSignIn} switchSumit={this.switchSumit} />
+      </div>
     )
   }
 

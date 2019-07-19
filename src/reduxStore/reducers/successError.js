@@ -1,5 +1,4 @@
 import * as actionType from '../actions';
-import { stat } from 'fs';
 
 const initialState = {
     loader: false,

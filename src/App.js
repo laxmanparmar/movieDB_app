@@ -9,21 +9,26 @@ import Movie from './components/Movie/Movie';
 import NavBar from './components/NavBarMenu/NavBar/NavBar';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logout from './container/Logout';
-import * as actionType from './reduxStore/actions';
 import MyLibrary from './components/MyLibrary/MyLibrary';
-import { ToastContainer,toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import '../node_modules/react-toastify/dist/ReactToastify.css';
-
+import * as authService from './services/authService/authService';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.autoLoginTry()
+    const autoLoginAction = authService.autoLogin()
+    this.props.autoLoginTry(autoLoginAction);
+
+    const sessionAction = authService.updateAutoLogOutSession();
+    if (Object.keys(sessionAction).length > 0) {
+      this.props.onUpdateSession(sessionAction);
+    }
+
   }
 
-  initAlert = ()=>
-  {
-     toast.success(this.props.alertMsg);
+  initAlert = () => {
+    toast.success(this.props.alertMsg);
   }
   render() {
     let routes = (
@@ -53,8 +58,8 @@ class App extends Component {
         <NavBar isAutheticate={this.props.isAutheticate} />
 
         {routes}
-        {this.props.isAlertCall? this.initAlert() :null}
-        <ToastContainer autoClose={2000} hideProgressBar={true} position={toast.POSITION.BOTTOM_CENTER}/>
+        {this.props.isAlertCall ? this.initAlert() : null}
+        <ToastContainer autoClose={2000} hideProgressBar={true} position={toast.POSITION.BOTTOM_CENTER} />
       </div>
     );
   }
@@ -65,14 +70,15 @@ const mapStateToProps = (state) => {
   return {
     onSpinner: state.movies.spinner || state.auth.loading,
     isAutheticate: state.auth.token !== null,
-    alertMsg : state.successError.msg,
-    isAlertCall : state.successError.showAlert
+    alertMsg: state.successError.msg,
+    isAlertCall: state.successError.showAlert
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    autoLoginTry: () => dispatch({ type: actionType.AUTH_AUTOLOGIN })
+    autoLoginTry: (action) => dispatch(action),
+    onUpdateSession: (action) => dispatch(action)
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App);
